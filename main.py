@@ -29,19 +29,10 @@ async def say(interaction: discord.Interaction, arg: str):
 async def become(interaction: discord.Interaction, arg: str):
     await interaction.response.send_message(f"{interaction.user.name} became: `{arg}`")
     
-
-# create a slash command to ping itself
 @bot.tree.command(name="ping")
 async def ping(interaction: discord.Interaction):
     # send a message to the user
     await interaction.response.send_message("Pong!")
 
-#create a slash command to incrememnt a counter
-counter = 0
-@bot.tree.command(name="counter")
-async def counter(interaction: discord.Interaction):
-    global counter
-    counter += 1
-    await interaction.response.send_message(f"Counter: {counter}")
 
 bot.run(TOKEN)
