@@ -23,15 +23,25 @@ async def hello(interaction: discord.Interaction):
 async def say(interaction: discord.Interaction, arg: str):
     await interaction.response.send_message(f"{interaction.user.name} said: `{arg}`")
 
-# create a slash command to increment a counter by 1 when using the command count
-@bot.tree.command(name="count")
-async def count(interaction: discord.Interaction):
-    # get the counter value from the interaction
-    counter = interaction.data.get("options", {}).get("counter", 0)
-    # increment the counter by 1
-    counter += 1
-    # send the new counter value
-    await interaction.response.send_message(f"Counter: {counter}")
+# become funny
+@bot.tree.command(name="become")
+@app_commands.describe(arg = "What should I become?")
+async def become(interaction: discord.Interaction, arg: str):
+    await interaction.response.send_message(f"{interaction.user.name} became: `{arg}`")
+    
 
+# create a slash command to ping itself
+@bot.tree.command(name="ping")
+async def ping(interaction: discord.Interaction):
+    # send a message to the user
+    await interaction.response.send_message("Pong!")
+
+#create a slash command to incrememnt a counter
+counter = 0
+@bot.tree.command(name="counter")
+async def counter(interaction: discord.Interaction):
+    global counter
+    counter += 1
+    await interaction.response.send_message(f"Counter: {counter}")
 
 bot.run(TOKEN)
