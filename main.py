@@ -28,7 +28,7 @@ async def submit(interaction: discord.Interaction, name: str, members: str, desc
     await interaction.response.send_message(embed=embed)
     channel = bot.get_channel(1077647771059888241)
     message = f"{name} has posted their project submission in <#{interaction.channel_id}>.\nPlease check the description for approval.\nMembers: {members_str}"
-    role = channel.guild.get_role(1049411275735695402)
+    role = channel.guild.get_role(1077647770019700838)
     await channel.send(f"{role} {message}")
 
 @bot.tree.command(name="help")
