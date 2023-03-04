@@ -17,7 +17,6 @@ async def on_ready():
 @bot.tree.command(name='submit')
 @app_commands.describe(name="Provide the team name.", members="Provide list of members with name and Discord ID separated by commas.", description="Provide a brief description of your project.", link="Provide a GitHub link to your project.")
 async def submit(interaction: discord.Interaction, name: str, members: str, description: str, link: str):
-    # Split members string into a list
     members_list = members.split(",")
     members_str = "\n".join(members_list)
     
@@ -32,7 +31,6 @@ async def submit(interaction: discord.Interaction, name: str, members: str, desc
     role = channel.guild.get_role(1049411275735695402)
     await channel.send(f"{role} {message}")
 
-# create a help command that gives embeds of the usefulness of each command and how to use them
 @bot.tree.command(name="help")
 async def help(interaction: discord.Interaction):
     embed = discord.Embed(title="Help", description="This is a list of commands you can use in the bot.", color=0x7289da)
