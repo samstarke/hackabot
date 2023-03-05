@@ -1,4 +1,5 @@
 import discord
+import random
 from discord import app_commands
 from discord.ext import commands
 from config import TOKEN
@@ -20,7 +21,7 @@ async def submit(interaction: discord.Interaction, name: str, members: str, desc
     members_list = members.split(",")
     members_str = "\n".join(members_list)
     
-    embed = discord.Embed(title=f"{name} Project Submission", description=f"`{description}`", color=0x7289da)
+    embed = discord.Embed(title=f"{name} Project Submission", description=f"`{description}`", color=random.randint(0, 0xFFFFFF))
     embed.add_field(name="Team Members", value=members_str, inline=False)
     embed.add_field(name="GitHub Link", value=f"[{link}]({link})", inline=False)
     embed.set_footer(text="Thanks for submitting! Administrators will get to your submission shortly.")
